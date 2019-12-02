@@ -95,7 +95,10 @@ function setup() {
     leg2 = line(450, 500, 350, 600);
 
     questionCount=0;
-
+    inp = createInput();
+    inp.position(820,600);
+    button = createButton("Submit");
+    button.position(1000,600);
 
     rulesText="A movie sutdio is scheduling the release of six films -- Fiesta, Glaciers, Hurricanes, Jets, Kangaroos, and Lovebird. No two of these films can be released on the same date. The release schedule is governed by the following conditions:";
     cond1="Fiesta must be released earlier than both Jets and Lovebird.";
@@ -201,5 +204,20 @@ function draw() {
     optionDpar.html(optionDText);
     optionEpar.html(optionEText);
 
-
+    button.mousePressed(Answer);
 }
+function Answer()
+{
+  if(correctOption1 == inp.value())
+  {
+     correct = true; 
+     textSize(32);
+     text("CORRECT!",550,200);
+     
+  }
+  else
+  {
+     correct = false; 
+  }
+}
+
