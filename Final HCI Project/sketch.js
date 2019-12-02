@@ -12,7 +12,7 @@ let optionCText;
 let optionDText;
 let optionEText;
 let correctOption;
-
+let correct;
 // question Texts
 let questionText1;
 let questionText2;
@@ -62,14 +62,6 @@ let correctOption3;
 let correctOption4;
 let correctOption5;
 
-let headcirc;
-let bodyline;
-let arm1;
-let arm2;
-let leg1;
-let leg2;
-
-
 
 function preload(){
     //SAOFont=loadFont('assets/SAOWelcomeAnotherTT-Bold.ttf');
@@ -78,25 +70,11 @@ function preload(){
 function setup() {
     createCanvas(1280, 640);
     background(255);
-
-    //hanger
-    fill(0);
-    strokeWeight(4);
-    line(300,100,300,800);
-    line(300,100,450,100);
-    line(450,100,450,200);
-
-    //hangman
-    headcirc = circle(450, 250, 100);
-    bodyline = line(450, 300, 450, 500);
-    arm1 = line(450, 350, 550, 450);
-    arm2 = line(450, 350, 350, 450);
-    leg1 = line(450, 500, 550,  600);
-    leg2 = line(450, 500, 350, 600);
-
     questionCount=0;
-
-
+    inp = createInput();
+    inp.position(820,600);
+    button = createButton("Submit");
+    button.position(1000,600);
     rulesText="A movie sutdio is scheduling the release of six films -- Fiesta, Glaciers, Hurricanes, Jets, Kangaroos, and Lovebird. No two of these films can be released on the same date. The release schedule is governed by the following conditions:";
     cond1="Fiesta must be released earlier than both Jets and Lovebird.";
     cond2="Kangaroos must be released earlier than Jets, and Jets must be released earlier than Hurricanes.";
@@ -148,7 +126,20 @@ function setup() {
 }
 
 function draw() {
-
+    //hanger
+    fill(0);
+    strokeWeight(4);
+    line(300,100,300,800);
+    line(300,100,450,100);
+    line(450,100,450,200);
+  
+    //hangman
+    headcirc = circle(450, 250, 100);
+    bodyline = line(450, 300, 450, 500);
+    arm1 = line(450, 350, 550, 450);
+    arm2 = line(450, 350, 350, 450);
+    leg1 = line(450, 500, 550,  600);
+    leg2 = line(450, 500, 350, 600);
 
     switch (questionCount){
         case 0:
@@ -200,6 +191,19 @@ function draw() {
     optionCpar.html(optionCText);
     optionDpar.html(optionDText);
     optionEpar.html(optionEText);
-
-
+    button.mousePressed(Answer);
+}
+function Answer()
+{
+  if(correctOption1 == inp.value())
+  {
+     correct = true; 
+     textSize(32);
+     text("CORRECT!",550,200);
+     
+  }
+  else
+  {
+     correct = false; 
+  }
 }
